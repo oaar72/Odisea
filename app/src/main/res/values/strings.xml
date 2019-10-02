@@ -1,0 +1,63 @@
+<resources>
+    <string name="app_name">Odisea</string>
+
+    <!-- Labels -->
+    <string name="lblEmail">Correo eléctronico</string>
+    <string name="lblPass">Contraseña</string>
+    <string name="lblPhone">Teléfono</string>
+    <string name="lblName">Nombre</string>
+    <string name="lblPaterno">Primer Apellido</string>
+    <string name="lblMaterno">Segudo Apellido</string>
+
+    <!-- Buttons -->
+    <string name="btnRegistro">Registro</string>
+    <string name="btnInicio">Iniciar Sesión</string>
+    <string name="btnCancelar">Cancelar</string>
+    <string name="btnAceptar">Aceptar</string>
+
+    <!-- Labels -->
+    <string name="lblRegistro">Continuar con Facebook</string>
+
+    <!-- Messages -->
+    <string name="msgCorreoNoValido">Dirección de correo no valida</string>
+    <string name="msgPassVacio">El campo Contraseña no puede ser vacio</string>
+    <string name="msgNombreVacio">El campo Nombre no puede ser vacio</string>
+    <string name="msgApellidoVacio">El Primer Apellido no puede ser vacio</string>
+    <string name="msgTelefonoVacio">El teléfono no puede ser vacio</string>
+    <string name="msgFailLogin">Usuario o contraseña no validos</string>
+    <string name="msgLeyenda1">Se necesita acceder a tu ubicación para colocarte en el mapa.</string>
+    <string name="msgLeyenda2">Se requieren permisos de ubicación para que el mapa, notificaciones y otras funciones operen correctamente.</string>
+    <string name="msgPermitirAcceso">Permitir acceso</string>
+    <string name="msgPoliticaPrivacidad">Consulta nuestra política de privacidad</string>
+
+    <!-- Content Description -->
+    <string name="DesLogo">Logo principal</string>
+    <string name="DesBtnFacebook">ImagenContinuarFacebook</string>
+
+    <!-- Services -->
+    <string name="namespace">http://tempuri.org/</string>
+    <string name="url">https://wsodisea.azurewebsites.net/WSOdisea.svc?wsdl</string>
+    <string name="soap_action">http://tempuri.org/IWSOdisea/</string>
+
+    <!-- Items -->
+    <string name="item_inicio">Inicio</string>
+    <string name="item_contact">Contactos</string>
+    <string name="item_sitios">Lugares</string>
+    <string name="item_config">Configuración</string>
+    <string name="item_logout">Cerrar Sesión</string>
+
+    <!-- Methods -->
+
+    <!-- getData Methods -->
+    <string name="method_ping">ping</string>
+    <string name="method_testDB">testDB</string>
+
+    <!-- postDataMethods -->
+    <string name="method_addPersona">addPersona</string>
+    <string name="method_getPersona">getPersona</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_desc">Navigation header</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/itemInicio"
+            android:icon="@drawable/ic_logo_odisea"
+            android:title="@string/item_inicio" />
+        <item
+            android:id="@+id/itemContactos"
+            android:icon="@drawable/ic_contacts"
+            android:title="@string/item_contact" />
+        <item
+            android:id="@+id/itemLugares"
+            android:icon="@drawable/ic_places"
+            android:title="@string/item_sitios" />
+        <item
+            android:id="@+id/itemConfiguracion"
+            android:icon="@drawable/ic_settings"
+            android:title="@string/item_config" />
+        <item
+            android:id="@+id/itemLogOut"
+            android:icon="@drawable/ic_turn_on"
+            android:title="@string/item_logout" />
+    </group>
+
+</menu>
