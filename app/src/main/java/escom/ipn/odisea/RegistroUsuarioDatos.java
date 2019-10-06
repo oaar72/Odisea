@@ -44,7 +44,7 @@ public class RegistroUsuarioDatos extends AppCompatActivity
 
                 String msgError = "";
 
-                Persona user = new Persona();
+                Persona user;
 
                 if (v_mail.equals(""))
                 {
@@ -102,9 +102,29 @@ public class RegistroUsuarioDatos extends AppCompatActivity
                         editor.putString("phone", v_phone);
                         editor.apply();
 
+                        String mailAsunto = getString(R.string.mailRegistro);
+                        String mailMensaje = "Estimado " + v_name + "<br/><br/>" +
+                                getString(R.string.mailBienvenida) + "<br/><br/>" +
+                                getString(R.string.mailDatos) + "<br/>" +
+                                getString(R.string.mailDatoUsuario) + " " + v_mail + "<br/>"+
+                                getString(R.string.mailDatoPass) + " " + v_pass + "<br/><br/>" +
+                                getString(R.string.mailFinMensaje);
+
+                        a_mail.setKey("destinatario");
+                        Argumento a_asunto = new Argumento("asunto", mailAsunto);
+                        Argumento a_mensaje = new Argumento("mensaje", mailMensaje);
+
+
+                        url          = getString(R.string.mail_url);
+                        soap_action  = getString(R.string.mail_soap_action);
+                        method       = "sendMail";
+
+                        service = new UtilsWCF(namespace, url, soap_action + method, method);
+
+                        service.sendMail(a_mail, a_asunto, a_mensaje);
+
                         Intent instancia = new Intent(v.getContext(), InicioUsuario.class);
                         startActivity(instancia);
-
                     }
                     else
                     {

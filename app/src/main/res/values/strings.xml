@@ -36,8 +36,14 @@
 
     <!-- Services -->
     <string name="namespace">http://tempuri.org/</string>
+
+    <!-- Odisea Services -->
     <string name="url">https://wsodisea.azurewebsites.net/WSOdisea.svc?wsdl</string>
     <string name="soap_action">http://tempuri.org/IWSOdisea/</string>
+
+    <!-- Mail Services -->
+    <string name="mail_url">https://wsmail.azurewebsites.net/ServicioMail.svc?wsdl</string>
+    <string name="mail_soap_action">http://tempuri.org/IServicioMail/</string>
 
     <!-- Items -->
     <string name="item_inicio">Inicio</string>
@@ -56,6 +62,13 @@
     <string name="method_addPersona">addPersona</string>
     <string name="method_getPersona">getPersona</string>
 
+    <!-- ConnectionString Mail -->
+    <string name="mailRegistro">Registro exitoso</string>
+    <string name="mailBienvenida">Gracias por tu registro</string>
+    <string name="mailDatos">Tus datos de conexión:</string>
+    <string name="mailDatoUsuario">Usuario:</string>
+    <string name="mailDatoPass">Contraseña: </string>
+    <string name="mailFinMensaje">Servicios Odisea</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

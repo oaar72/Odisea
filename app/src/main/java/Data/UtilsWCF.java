@@ -1,5 +1,6 @@
 package Data;
 
+import android.os.Build;
 import android.os.StrictMode;
 
 import org.ksoap2.SoapEnvelope;
@@ -67,7 +68,7 @@ public class UtilsWCF
         catch (Exception e)
         {
             e.printStackTrace();
-            persona.setMensaje("Ocurrio un Error. " + e.getStackTrace());
+            persona.setMensaje("Ocurrio un Error.");
         }
         return persona;
     }
@@ -118,5 +119,39 @@ public class UtilsWCF
             e.printStackTrace();
         }
         return user;
+    }
+
+    public String sendMail(Argumento destinatario, Argumento asunto, Argumento mensaje)
+    {
+        String msgError = "";
+
+        SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
+
+        request.addProperty(destinatario.getKey(), destinatario.getValue());
+        request.addProperty(asunto.getKey(), asunto.getValue());
+        request.addProperty(mensaje.getKey(), mensaje.getValue());
+
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.dotNet = true;
+        envelope.setOutputSoapObject(request);
+
+        HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+
+        if (Build.VERSION.SDK_INT > 9)
+        {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+
+        try
+        {
+            androidHttpTransport.call(SOAP_ACTION, envelope);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return msgError;
     }
 }

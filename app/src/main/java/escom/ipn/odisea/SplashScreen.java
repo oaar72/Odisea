@@ -20,7 +20,7 @@ public class SplashScreen extends AppCompatActivity {
             public void run()
             {
                 SharedPreferences pref = getApplicationContext().getSharedPreferences("OdiseaPreferences", MODE_PRIVATE);
-                Boolean sesion = pref.getBoolean("Sesionado", false);
+                boolean sesion = pref.getBoolean("Sesionado", false);
 
                 if (sesion)
                 {
@@ -29,7 +29,7 @@ public class SplashScreen extends AppCompatActivity {
                 }
                 else
                 {
-                    Intent instancia = new Intent(SplashScreen.this, InicioUsuario.class);
+                    Intent instancia = new Intent(SplashScreen.this, MainActivity.class);
                     startActivity(instancia);
                 }
             }
