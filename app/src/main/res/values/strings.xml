@@ -3,7 +3,9 @@
 
     <!-- Labels -->
     <string name="lblEmail">Correo eléctronico</string>
+    <string name="lblEmailConfirma">Confirma Correo</string>
     <string name="lblPass">Contraseña</string>
+    <string name="lblConfirmaPass">Confirma contraseña</string>
     <string name="lblPhone">Teléfono</string>
     <string name="lblName">Nombre</string>
     <string name="lblPaterno">Primer Apellido</string>
@@ -29,6 +31,9 @@
     <string name="msgLeyenda2">Se requieren permisos de ubicación para que el mapa, notificaciones y otras funciones operen correctamente.</string>
     <string name="msgPermitirAcceso">Permitir acceso</string>
     <string name="msgPoliticaPrivacidad">Consulta nuestra política de privacidad</string>
+    <string name="msgContraseñaNoConsistente">Las contraseñas no son iguales.</string>
+    <string name="msgMailNoConsistente">El correo debe ser igual.</string>
+    <string name="msgTelefonoInvalido">Número de Teléfono no valido</string>
 
     <!-- Content Description -->
     <string name="DesLogo">Logo principal</string>
