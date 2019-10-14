@@ -2,8 +2,10 @@ package escom.ipn.odisea;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,7 +16,12 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 public class InicioUsuario extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        Fragmento_Configuracion.OnFragmentInteractionListener,
+        Fragmento_Contactos.OnFragmentInteractionListener,
+        Fragmento_Inicio.OnFragmentInteractionListener,
+        Fragmento_Lugares.OnFragmentInteractionListener
+{
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -54,8 +61,6 @@ public class InicioUsuario extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-        // Inflate the menu; this adds items to the action bar if it is present.
-
         SharedPreferences pref = getApplicationContext().getSharedPreferences("OdiseaPreferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
 
@@ -85,21 +90,29 @@ public class InicioUsuario extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        Fragment frag = null;
+
+        boolean isSelectedFrag = false;
+
         if (id == R.id.txtInicioMail)
         {
-            // Handle the camera action
+            frag = new Fragmento_Inicio();
+            isSelectedFrag = true;
         }
         else if (id == R.id.itemContactos)
         {
-
+            frag = new Fragmento_Contactos();
+            isSelectedFrag = true;
         }
         else if (id == R.id.itemLugares)
         {
-
+            frag = new Fragmento_Lugares();
+            isSelectedFrag = true;
         }
         else if (id == R.id.itemConfiguracion)
         {
-
+            frag = new Fragmento_Configuracion();
+            isSelectedFrag = true;
         }
         else if (id == R.id.itemLogOut)
         {
@@ -111,8 +124,18 @@ public class InicioUsuario extends AppCompatActivity
             startActivity(instancia);
         }
 
+        if (isSelectedFrag)
+        {
+            getSupportFragmentManager().beginTransaction().replace(R.id.Contenedor, frag).commit();
+        }
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
