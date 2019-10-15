@@ -9,6 +9,7 @@ import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
 import Entidad.Argumento;
+import Entidad.Contacto;
 import Entidad.Persona;
 
 public class UtilsWCF
@@ -153,5 +154,51 @@ public class UtilsWCF
         }
 
         return msgError;
+    }
+
+    public Contacto addContact(Argumento usuario, Argumento nombre, Argumento phone, Argumento mail)
+    {
+        SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
+
+        request.addProperty(usuario.getKey(), usuario.getValue());
+        request.addProperty(nombre.getKey(), nombre.getValue());
+        request.addProperty(mail.getKey(), mail.getValue());
+        request.addProperty(phone.getKey(), phone.getValue());
+
+        Contacto contact = new Contacto();
+
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.dotNet = true;
+        envelope.setOutputSoapObject(request);
+
+        HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+
+        if (android.os.Build.VERSION.SDK_INT > 9)
+        {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+        try
+        {
+            androidHttpTransport.call(SOAP_ACTION, envelope);
+            SoapObject response = (SoapObject) envelope.getResponse();
+
+            if (response.getProperty("mensaje") != null)
+            {
+                contact.setMensaje(response.getPropertyAsString("mensaje"));
+            }
+
+            if (contact.getMensaje().equals(" "))
+            {
+                contact.setnombre(response.getPropertyAsString("nombre"));
+                contact.settelefono(response.getPropertyAsString("telefono"));
+                contact.setmail(response.getPropertyAsString("mail"));
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return contact;
     }
 }
