@@ -9,6 +9,7 @@ public class Persona
     private String pasword;
     private String telefono;
     private String mensaje;
+    private String token;
 
     public Persona()
     {
@@ -20,17 +21,19 @@ public class Persona
         this.pasword  = "";
         this.telefono = "";
         this.mensaje  = "";
+        this.token    = "";
     }
 
-    public Persona(String nombre, String paterno, String materno, String codUser, String password, String telefono)
+    public Persona(String nombre, String paterno, String materno, String codUser, String password, String telefono, String token)
     {
-        this.nombre  = nombre;
-        this.paterno = paterno;
-        this.materno = materno;
-        this.codUser = codUser;
-        this.codUser = codUser;
-        this.pasword = password;
+        this.nombre   = nombre;
+        this.paterno  = paterno;
+        this.materno  = materno;
+        this.codUser  = codUser;
+        this.codUser  = codUser;
+        this.pasword  = password;
         this.telefono = telefono;
+        this.token    = token;
     }
 
     public String getNombre()
@@ -94,5 +97,14 @@ public class Persona
     public void setMensaje(String mensaje)
     {
         this.mensaje = mensaje;
+    }
+
+    public String gettoken()
+    {
+        return this.token;
+    }
+    public void settoken(String token)
+    {
+        this.token = token;
     }
 }

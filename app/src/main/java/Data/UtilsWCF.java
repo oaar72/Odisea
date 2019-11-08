@@ -74,7 +74,7 @@ public class UtilsWCF
         return persona;
     }
 
-    public Persona addUser(Argumento mail, Argumento pass, Argumento nombre, Argumento paterno, Argumento phone)
+    public Persona addUser(Argumento mail, Argumento pass, Argumento nombre, Argumento paterno, Argumento phone, Argumento token)
     {
         SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
 
@@ -83,6 +83,7 @@ public class UtilsWCF
         request.addProperty(nombre.getKey(), nombre.getValue());
         request.addProperty(paterno.getKey(), paterno.getValue());
         request.addProperty(phone.getKey(), phone.getValue());
+        request.addProperty(token.getKey(), token.getValue());
 
         Persona user = new Persona();
 
@@ -113,6 +114,7 @@ public class UtilsWCF
                 user.setNombre(response.getPropertyAsString("nombre"));
                 user.setPaterno(response.getPropertyAsString("paterno"));
                 user.setTelefono(response.getPropertyAsString("telefono"));
+                user.settoken(response.getPropertyAsString("token"));
             }
         }
         catch (Exception e)

@@ -38,6 +38,11 @@
     <string name="msgMailNoConsistente">El correo debe ser igual.</string>
     <string name="msgTelefonoInvalido">Número de Teléfono no valido</string>
 
+    <!--Send information messages -->
+
+    <string name="msgUltimaUbicacion">Ultima Ubicación:</string>
+    <string name="msgNivelBateria">Bateria:</string>
+
     <!-- Content Description -->
     <string name="DesLogo">Logo principal</string>
     <string name="DesBtnFacebook">ImagenContinuarFacebook</string>

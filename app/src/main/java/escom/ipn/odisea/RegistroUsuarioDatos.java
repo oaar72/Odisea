@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+
 import Data.UtilsWCF;
 import Entidad.Argumento;
 import Entidad.Persona;
@@ -50,6 +52,7 @@ public class RegistroUsuarioDatos extends AppCompatActivity
                 String v_name    = nombre.getText().toString();
                 String v_paterno = paterno.getText().toString();
                 String v_phone   = phone.getText().toString();
+                String v_token   = FirebaseInstanceId.getInstance().getToken();
 
                 String msgError = "";
 
@@ -121,10 +124,11 @@ public class RegistroUsuarioDatos extends AppCompatActivity
                     Argumento a_nombre  = new Argumento("nombre", v_name);
                     Argumento a_paterno = new Argumento("paterno", v_paterno);
                     Argumento a_phone   = new Argumento("phone", v_phone);
+                    Argumento a_token   = new Argumento("token", v_token);
 
                     UtilsWCF service = new UtilsWCF(namespace, url, soap_action + method, method);
 
-                    user  = service.addUser(a_mail, a_pass, a_nombre, a_paterno, a_phone);
+                    user  = service.addUser(a_mail, a_pass, a_nombre, a_paterno, a_phone, a_token);
 
                     msgError = user.getMensaje();
 
@@ -138,6 +142,7 @@ public class RegistroUsuarioDatos extends AppCompatActivity
                         editor.putString("nombre", v_name);
                         editor.putString("paterno", v_paterno);
                         editor.putString("phone", v_phone);
+                        editor.putString("token", v_token);
                         editor.apply();
 
                         String mailAsunto = getString(R.string.mailRegistro);

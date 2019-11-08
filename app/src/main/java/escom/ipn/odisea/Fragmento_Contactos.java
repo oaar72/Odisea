@@ -44,7 +44,8 @@ public class Fragmento_Contactos extends Fragment {
      * @return A new instance of fragment Fragmento_Contactos.
      */
     // TODO: Rename and change types and number of parameters
-    public static Fragmento_Contactos newInstance(String param1, String param2) {
+    public static Fragmento_Contactos newInstance(String param1, String param2)
+    {
         Fragmento_Contactos fragment = new Fragmento_Contactos();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
