@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1095141913272",
+    "firebase_url": "https://odisea-26d33.firebaseio.com",
+    "project_id": "odisea-26d33",
+    "storage_bucket": "odisea-26d33.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1095141913272:android:7ef314c2ccfa528ece7a4d",
+        "android_client_info": {
+          "package_name": "escom.ipn.odisea"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1095141913272-ohjh70trtgcr6850rjsptb9q2b399c9f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "escom.ipn.odisea",
+            "certificate_hash": "63d694009102b49aadac4efa676513a7b5340fd6"
+          }
+        },
+        {
+          "client_id": "1095141913272-a5n804eur25h3dt5k7ivdf9idp5d164m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCB346OQyyY1c39omRr5el3RBCJOa2QZSE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1095141913272-a5n804eur25h3dt5k7ivdf9idp5d164m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
