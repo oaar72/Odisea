@@ -16,12 +16,18 @@
     <string name="lblRegistro">Continuar con Facebook</string>
     <string name="lblDireccion">Dirección</string>
     <string name="lblPrioridad">Prioridad</string>
+    <string name="lblDatoMedico">Datos Médicos</string>
+    <string name="lblTipoDeSangre">Ingresa tu tipo de Sangre</string>
+    <string name="lblDonadorOrganos">¿Eres donador de Organos?</string>
+    <string name="lblEDC">¿Padeces alguna ECD?</string>
+    <string name="lblAlergias">¿Padeces alguna Alergia?</string>
 
     <!-- Buttons -->
     <string name="btnRegistro">Registro</string>
     <string name="btnInicio">Iniciar Sesión</string>
     <string name="btnCancelar">Cancelar</string>
     <string name="btnAceptar">Aceptar</string>
+    <string name="btnGuardar">Guardar</string>
 
     <!-- Messages -->
     <string name="msgCorreoNoValido">Dirección de correo no valida</string>
@@ -86,6 +92,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_desc">Navigation header</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

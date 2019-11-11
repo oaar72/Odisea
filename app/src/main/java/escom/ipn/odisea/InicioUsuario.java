@@ -111,7 +111,7 @@ public class InicioUsuario extends AppCompatActivity
         }
         else if (id == R.id.itemConfiguracion)
         {
-            frag = new Fragmento_Configuracion();
+            frag = new Fragmento_DatosMedicos();
             isSelectedFrag = true;
         }
         else if (id == R.id.itemLogOut)
