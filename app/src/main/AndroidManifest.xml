@@ -13,11 +13,17 @@
         android:roundIcon="@drawable/ic_logo_odisea"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <service android:name=".NotificationService" android:enabled="true" android:exported="true">
+        <activity android:name=".registraDatosMedicos"></activity>
+
+        <service
+            android:name=".NotificationService"
+            android:enabled="true"
+            android:exported="true">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
         <activity android:name=".RegistroContactos" />
         <activity
             android:name=".SplashScreen"

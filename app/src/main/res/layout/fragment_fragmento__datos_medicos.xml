@@ -6,30 +6,49 @@
     android:layout_height="match_parent"
     tools:context=".Fragmento_DatosMedicos">
 
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Separa con comas"
+        android:textAlignment="center"
+        android:textColor="#064A7A"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPassRegistro" />
+
     <Button
         android:id="@+id/btnConfirmaDatos"
         android:layout_width="160dp"
         android:layout_height="50dp"
         android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/buttonshape"
         android:shadowColor="#A8A8A8"
         android:text="@string/btnGuardar"
+        app:layout_constraintBottom_toTopOf="@+id/txtErrorRegistro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPassRegistro" />
+        app:layout_constraintTop_toBottomOf="@+id/editText3" />
 
     <EditText
         android:id="@+id/txtPassRegistro"
         android:layout_width="250dp"
         android:layout_height="46dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="@string/lblAlergias"
         android:inputType="textPassword"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtMailRegistroConfirma" />
+        app:layout_constraintTop_toBottomOf="@+id/editText2" />
 
     <EditText
         android:id="@+id/txtTipoSangre"
@@ -134,8 +153,8 @@
         app:layout_constraintTop_toBottomOf="@+id/txtTipoSangre" />
 
     <RadioGroup
-        android:layout_width="261dp"
-        android:layout_height="73dp"
+        android:layout_width="243dp"
+        android:layout_height="44dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toTopOf="@+id/txtMailRegistroConfirma"
@@ -144,6 +163,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.4" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Separa con comas"
+        android:textAlignment="center"
+        android:textColor="#064A7A"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMailRegistroConfirma" />
 
 
 </android.support.constraint.ConstraintLayout>
