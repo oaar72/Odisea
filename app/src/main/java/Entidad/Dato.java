@@ -1,7 +1,7 @@
 package Entidad;
 
-public class Dato {
-
+public class Dato
+{
     private String tipo;
     private String descripcion;
     private String valor;
@@ -9,8 +9,8 @@ public class Dato {
 
     public Dato()
     {
-        this.tipo     = "";
-        this.descripcion   = "";
+        this.tipo        = "";
+        this.descripcion = "";
         this.valor       = "";
         this.mensaje     = "";
 
@@ -18,8 +18,8 @@ public class Dato {
 
     public Dato(String tipo, String descripcion, String valor)
     {
-        this.tipo     = tipo;
-        this.descripcion   = descripcion;
+        this.tipo        = tipo;
+        this.descripcion = descripcion;
         this.valor       = valor;
     }
 

@@ -19,7 +19,6 @@ public class InicioUsuario extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         Fragmento_Configuracion.OnFragmentInteractionListener,
         Fragmento_Contactos.OnFragmentInteractionListener,
-        Fragmento_Inicio.OnFragmentInteractionListener,
         Fragmento_Lugares.OnFragmentInteractionListener
 {
 
@@ -94,7 +93,7 @@ public class InicioUsuario extends AppCompatActivity
 
         boolean isSelectedFrag = false;
 
-        if (id == R.id.txtInicioMail)
+        if (id == R.id.itemInicio)
         {
             frag = new Fragmento_Inicio();
             isSelectedFrag = true;
@@ -128,6 +127,7 @@ public class InicioUsuario extends AppCompatActivity
         {
             getSupportFragmentManager().beginTransaction().replace(R.id.Contenedor, frag).commit();
         }
+
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
