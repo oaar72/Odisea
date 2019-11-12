@@ -10,6 +10,7 @@ import org.ksoap2.transport.HttpTransportSE;
 
 import Entidad.Argumento;
 import Entidad.Contacto;
+import Entidad.Dato;
 import Entidad.Persona;
 
 public class UtilsWCF
@@ -156,6 +157,44 @@ public class UtilsWCF
         }
 
         return msgError;
+    }
+
+    public Dato addDato(Argumento valor, Argumento descripcion, Argumento usuario)
+    {
+        SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
+
+        request.addProperty(valor.getKey(), valor.getValue());
+        request.addProperty(descripcion.getKey(), descripcion.getValue());
+        request.addProperty(usuario.getKey(),usuario.getValue());
+
+        Dato dato = new Dato();
+
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.dotNet = true;
+        envelope.setOutputSoapObject(request);
+
+        HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+
+        if (android.os.Build.VERSION.SDK_INT > 9)
+        {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+        try
+        {
+            androidHttpTransport.call(SOAP_ACTION, envelope);
+            SoapObject response = (SoapObject) envelope.getResponse();
+
+            if (response.getProperty("mensaje") != null)
+            {
+                dato.setMensaje(response.getPropertyAsString("mensaje"));
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return dato;
     }
 
     public Contacto addContact(Argumento usuario, Argumento nombre, Argumento phone, Argumento mail)

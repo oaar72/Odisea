@@ -43,6 +43,7 @@
     <string name="msgContraseñaNoConsistente">Las contraseñas no son iguales.</string>
     <string name="msgMailNoConsistente">El correo debe ser igual.</string>
     <string name="msgTelefonoInvalido">Número de Teléfono no valido</string>
+    <string name="msgNoSeHaregistradoNingunDato">No se ha registrado ningún dato médico</string>
 
     <!--Send information messages -->
 
