@@ -1,12 +1,22 @@
 package escom.ipn.odisea;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.TextView;
+
+import Data.UtilsWCF;
+import Entidad.Argumento;
+import Entidad.Dato;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 /**
@@ -33,74 +43,94 @@ public class Fragmento_DatosMedicos extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Fragmento_DatosMedicos.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Fragmento_DatosMedicos newInstance(String param1, String param2) {
-        Fragmento_DatosMedicos fragment = new Fragmento_DatosMedicos();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        final Button btnGuardarDatosM     = findViewById(R.id.btnGuardarDatosMedicos);
+        final TextView txtECD             = findViewById(R.id.txtECD);
+        final TextView txtAlergias        = findViewById(R.id.txtAlergias);
+        final TextView txtTipoSangre      = findViewById(R.id.txtTipoSangre);
+        final TextView msg                = findViewById(R.id.txtErrorRegistro);
+        final RadioButton rbSi            = findViewById(R.id.rbSiDona);
+        final RadioButton rbNo            = findViewById(R.id.rbNoDona);
+
+        final SharedPreferences pref = getApplicationContext().getSharedPreferences("OdiseaPreferences", MODE_PRIVATE);
+
+        btnGuardarDatosM.setOnClickListener(new View.OnClickListener()
+        {
+            String v_usuario        = pref.getString("mail", "");
+            String v_TipoSangre     = txtTipoSangre.getText().toString();
+            String v_ECD            = txtECD.getText().toString();
+            String v_Alergias       = txtAlergias.getText().toString();
+
+            String msgError = "";
+
+            @Override
+            public void onClick(View v)
+            {
+                String namespace    = getString(R.string.namespace);
+                String url          = getString(R.string.url);
+                String soap_action  = getString(R.string.soap_action);
+                String method       = "addDatoMedico";
+
+                if (v_TipoSangre.equals("") && v_ECD.equals("")&& v_Alergias.equals(""))
+                {
+                    msgError = getString(R.string.msgNoSeHaregistradoNingunDato);
+                }
+                else
+                {
+                    if(!v_TipoSangre.equals(""))
+                    {
+                        Argumento a_valor = new Argumento("valor",v_TipoSangre);
+                        Argumento a_descripcion      = new Argumento("descripcion","Tipo Sangre");
+                        Argumento a_usuario  = new Argumento("usuario",v_usuario);
+                        Dato con = new Dato();
+                        UtilsWCF service = new UtilsWCF(namespace, url, soap_action + method, method);
+
+                        con = service.addDato(a_valor, a_descripcion,a_usuario);
+                    }
+                    if(!v_ECD.equals(""))
+                    {
+                        Argumento a_valor            = new Argumento("valor",v_ECD);
+                        Argumento a_descripcion      = new Argumento("descripcion","ECD");
+                        Argumento a_usuario  = new Argumento("usuario",v_usuario);
+                        Dato con = new Dato();
+                        UtilsWCF service = new UtilsWCF(namespace, url, soap_action + method, method);
+
+                        con = service.addDato(a_valor, a_descripcion,a_usuario);
+                    }
+                    if(!v_Alergias.equals(""))
+                    {
+                        Argumento a_valor            = new Argumento("valor",v_Alergias);
+                        Argumento a_descripcion      = new Argumento("descripcion","Alergias");
+                        Argumento a_usuario  = new Argumento("usuario",v_usuario);
+                        Dato con = new Dato();
+                        UtilsWCF service = new UtilsWCF(namespace, url, soap_action + method, method);
+
+                        con = service.addDato(a_valor, a_descripcion,a_usuario);
+                    }
+                }
+
+                if (!msgError.equals(""))
+                {
+                    msg.setVisibility(View.VISIBLE);
+                    msg.setText(msgError);
+                }
+            }
+        });
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_fragmento__datos_medicos, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
