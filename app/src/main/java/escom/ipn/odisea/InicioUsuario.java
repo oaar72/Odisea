@@ -108,6 +108,11 @@ public class InicioUsuario extends AppCompatActivity
             frag = new Fragmento_Lugares();
             isSelectedFrag = true;
         }
+        else if (id == R.id.itemAccount)
+        {
+            frag = new Fragmento_Cuenta();
+            isSelectedFrag = true;
+        }
         else if (id == R.id.itemConfiguracion)
         {
             frag = new Fragmento_DatosMedicos();
@@ -127,7 +132,6 @@ public class InicioUsuario extends AppCompatActivity
         {
             getSupportFragmentManager().beginTransaction().replace(R.id.Contenedor, frag).commit();
         }
-
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

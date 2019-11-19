@@ -15,7 +15,8 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.

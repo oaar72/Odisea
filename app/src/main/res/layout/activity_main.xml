@@ -11,7 +11,7 @@
         android:layout_width="74dp"
         android:layout_height="80dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:contentDescription="@string/DesLogo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +39,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:ems="10"
         android:hint="@string/lblEmail"
@@ -69,7 +69,7 @@
         android:layout_width="160dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/buttonshape"
         android:shadowColor="#A8A8A8"
@@ -89,7 +89,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
 
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/buttonshape"
         android:shadowColor="#A8A8A8"
@@ -101,40 +101,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
-    <TextView
-        android:id="@+id/lblRegistro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/lblRegistro"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnFacebookLogin" />
+    <Button
+        android:id="@+id/btnOlvidePass"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
 
-    <ImageButton
-        android:id="@+id/btnFacebookLogin"
-        android:layout_width="74dp"
-        android:layout_height="79dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="8dp"
-        android:background="@null"
-        android:contentDescription="@string/DesBtnFacebook"
-        android:scaleType="fitXY"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/buttonshape"
+
+        android:shadowColor="#A8A8A8"
+        android:text="@string/msgOlvideContrasenia"
+        android:textColor="#FFFFFFFF"
+        android:textSize="@dimen/btn_size"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegistro"
-        app:srcCompat="@drawable/ic_facebook" />
+        app:layout_constraintTop_toBottomOf="@+id/btnRegistro" />
 
     <TextView
         android:id="@+id/txtError"
         android:layout_width="328dp"
         android:layout_height="67dp"
-        android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
@@ -143,7 +129,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/txtPass"
         app:layout_constraintHorizontal_bias="0.512"
-        app:layout_constraintStart_toStartOf="@+id/txtPass"
-        app:layout_constraintTop_toBottomOf="@+id/lblRegistro" />
+        app:layout_constraintStart_toStartOf="@+id/txtPass" />
 
 </android.support.constraint.ConstraintLayout>
