@@ -9,6 +9,8 @@ import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
+import java.util.ArrayList;
+
 import Entidad.Argumento;
 import Entidad.Contacto;
 import Entidad.Dato;
@@ -276,4 +278,79 @@ public class UtilsWCF
         }
         return mensaje;
     }
+    public ArrayList<String> traerGrupos()
+    {
+        SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
+
+        /*request.addProperty(valor.getKey(), valor.getValue());
+        request.addProperty(descripcion.getKey(), descripcion.getValue());
+        request.addProperty(usuario.getKey(),usuario.getValue());*/
+
+        Dato dato = new Dato();
+
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.dotNet = true;
+        envelope.setOutputSoapObject(request);
+
+        HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+
+        if (android.os.Build.VERSION.SDK_INT > 9)
+        {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+        try
+        {
+            androidHttpTransport.call(SOAP_ACTION, envelope);
+            SoapObject response = (SoapObject) envelope.getResponse();
+
+            ArrayList<String> lista = new ArrayList<>();
+            lista.add(response.getPropertyAsString("string"));
+            return lista;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ArrayList<String> traerContactos(Argumento parametros)
+    {
+        SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
+
+        request.addProperty(parametros.getKey(), parametros.getValue());
+        /*
+        request.addProperty(descripcion.getKey(), descripcion.getValue());
+        request.addProperty(usuario.getKey(),usuario.getValue());*/
+
+        Dato dato = new Dato();
+
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.dotNet = true;
+        envelope.setOutputSoapObject(request);
+
+        HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+
+        if (android.os.Build.VERSION.SDK_INT > 9)
+        {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+        try
+        {
+            androidHttpTransport.call(SOAP_ACTION, envelope);
+            SoapObject response = (SoapObject) envelope.getResponse();
+
+            ArrayList<String> lista = new ArrayList<>();
+            lista.add(response.getPropertyAsString("string"));
+            return lista;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }
