@@ -21,6 +21,7 @@
     <string name="lblDonadorOrganos">¿Eres donador de Organos?</string>
     <string name="lblEDC">¿Padeces alguna ECD?</string>
     <string name="lblAlergias">¿Padeces alguna Alergia?</string>
+    <string name="lblRecoverPass">Recuperar Contraseña</string>
 
     <!-- Buttons -->
     <string name="btnRegistro">Registro</string>
@@ -28,6 +29,9 @@
     <string name="btnCancelar">Cancelar</string>
     <string name="btnAceptar">Aceptar</string>
     <string name="btnGuardar">Guardar</string>
+    <string name="btnBorrarCuenta">Borrar cuenta</string>
+    <string name="btnEnviar">Enviar</string>
+    <string name="btnActualizarInfo">Actualizar</string>
 
     <!-- Messages -->
     <string name="msgCorreoNoValido">Dirección de correo no valida</string>
@@ -44,6 +48,10 @@
     <string name="msgMailNoConsistente">El correo debe ser igual.</string>
     <string name="msgTelefonoInvalido">Número de Teléfono no valido</string>
     <string name="msgNoSeHaregistradoNingunDato">No se ha registrado ningún dato médico</string>
+
+    <string name="msgSitioOdisea">https://odisea.azurewebsites.net/</string>
+    <string name="msgOlvideContrasenia">Olvide mi contraseña</string>
+    <string name="msgRecover">Ingresa el correo con el cual te registraste para reestablecer la contraseña</string>
 
     <!--Send information messages -->
 
@@ -70,6 +78,7 @@
     <string name="item_contact">Contactos</string>
     <string name="item_sitios">Lugares</string>
     <string name="item_config">Configuración</string>
+    <string name="item_cuenta">Cuenta</string>
     <string name="item_logout">Cerrar Sesión</string>
 
     <!-- Methods -->

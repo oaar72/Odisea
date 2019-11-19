@@ -21,6 +21,14 @@
             android:icon="@drawable/ic_settings"
             android:title="@string/item_config" />
         <item
+            android:id="@+id/itemAccount"
+            android:icon="@drawable/ic_users"
+            android:title="@string/item_cuenta" />
+        <item
+            android:id="@+id/itemCambioContrasenia"
+            android:icon="@drawable/ic_users"
+            android:title="Cambiar Contraseña" />
+        <item
             android:id="@+id/itemLogOut"
             android:icon="@drawable/ic_turn_on"
             android:title="@string/item_logout" />

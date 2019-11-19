@@ -5,6 +5,7 @@ import android.os.StrictMode;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
@@ -241,5 +242,38 @@ public class UtilsWCF
             e.printStackTrace();
         }
         return contact;
+    }
+
+    public String recoverPassword(Argumento mail)
+    {
+        String mensaje;
+
+        SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
+
+        request.addProperty(mail.getKey(), mail.getValue());
+
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.dotNet = true;
+        envelope.setOutputSoapObject(request);
+
+        HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+
+        if (android.os.Build.VERSION.SDK_INT > 9)
+        {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+        try
+        {
+            androidHttpTransport.call(SOAP_ACTION, envelope);
+            SoapPrimitive response = (SoapPrimitive) envelope.getResponse();
+            mensaje = response.toString();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            mensaje = e.getStackTrace().toString();
+        }
+        return mensaje;
     }
 }

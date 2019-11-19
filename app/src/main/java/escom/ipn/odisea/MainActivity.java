@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity
 
         Button btnRegister        = findViewById(R.id.btnRegistro);
         Button btnLogin           = findViewById(R.id.btnLogin);
+        Button btnPass            = findViewById(R.id.btnOlvidePass);
 
         final TextView usuario    = findViewById(R.id.txtEmail);
         final TextView pass       = findViewById(R.id.txtPass);
@@ -107,6 +108,16 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 Intent intent = new Intent (v.getContext(), RegistroUsuario.class);
+                startActivityForResult(intent, 0);
+            }
+        });
+
+        btnPass.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent (v.getContext(), OlvidePass.class);
                 startActivityForResult(intent, 0);
             }
         });
