@@ -1,6 +1,7 @@
 package escom.ipn.odisea;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.util.*;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -26,7 +28,7 @@ import static android.content.Context.MODE_PRIVATE;
  * {@link ConsultaContactos.OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class ConsultaContactos extends Fragment implements ListView.OnClickListener{
+public class ConsultaContactos extends Fragment {
 
     //private OnFragmentInteractionListener mListener;
 
@@ -40,7 +42,7 @@ public class ConsultaContactos extends Fragment implements ListView.OnClickListe
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_consulta_contactos, container, false);
 
-         ListView list;
+         final ListView list;
          String[] sistemas = {"Ubuntu", "Android", "iOS", "Windows", "Mac OSX",
                 "Google Chrome OS", "Debian", "Mandriva", "Solaris", "Unix"};
 
@@ -72,6 +74,26 @@ public class ConsultaContactos extends Fragment implements ListView.OnClickListe
         ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_list_item_1,contactos);
         list.setAdapter(adaptador);
 
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+
+                //Intent myIntent = new Intent(getActivity(), getActivity().getClass()); //NextActivity.class);
+                //getActivity().startActivity(myIntent);
+              //String contacto = list.getSelectedItem().toString();
+
+                actualizarContactos nextFrag= new actualizarContactos();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.Contenedor, nextFrag, "findThisFragment")
+                        .addToBackStack(null)
+                        .commit();
+
+
+
+            }
+        });
+
+
 
         return v;
     }
@@ -100,12 +122,6 @@ public class ConsultaContactos extends Fragment implements ListView.OnClickListe
         //mListener = null;
     }
 
-    @Override
-    public void onClick(View v) {
-
-
-
-    }
 
     /**
      * This interface must be implemented by activities that contain this
