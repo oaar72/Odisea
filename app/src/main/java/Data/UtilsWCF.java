@@ -208,6 +208,7 @@ public class UtilsWCF
         request.addProperty(nombre.getKey(), nombre.getValue());
         request.addProperty(mail.getKey(), mail.getValue());
         request.addProperty(phone.getKey(), phone.getValue());
+        request.addProperty(clasifi.getKey(), clasifi.getValue());
 
         Contacto contact = new Contacto();
 

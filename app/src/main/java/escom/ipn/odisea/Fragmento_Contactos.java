@@ -193,7 +193,7 @@ public class Fragmento_Contactos extends Fragment implements View.OnClickListene
             Argumento a_nombre      = new Argumento("nombre",v_nombre);
             Argumento a_telefono    = new Argumento("telefono", v_telefono);
             Argumento a_mail        = new Argumento("mail", v_mail);
-            Argumento clasificacion = new Argumento("clasifi", v_clasifi);
+            Argumento clasificacion = new Argumento("descripcion", v_clasifi);
 
             String namespace    = getString(R.string.namespace);
             String url          = getString(R.string.url);
@@ -205,6 +205,12 @@ public class Fragmento_Contactos extends Fragment implements View.OnClickListene
             UtilsWCF service = new UtilsWCF(namespace, url, soap_action + method, method);
 
             con = service.addContact(a_usuario, a_nombre, a_telefono, a_mail,clasificacion);
+
+            ConsultaContactos nextFrag= new ConsultaContactos();
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.Contenedor, nextFrag, "findThisFragment")
+                    .addToBackStack(null)
+                    .commit();
 
         }
         else
