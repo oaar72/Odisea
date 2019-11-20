@@ -115,9 +115,9 @@ public class Fragmento_DatosMedicos extends Fragment implements View.OnClickList
         {
             if(!v_TipoSangre.equals(""))
             {
-                Argumento a_valor = new Argumento("valor",v_TipoSangre);
-                Argumento a_descripcion      = new Argumento("descripcion","Tipo Sangre");
-                Argumento a_usuario  = new Argumento("usuario",v_usuario);
+                Argumento a_valor       = new Argumento("valor",v_TipoSangre);
+                Argumento a_descripcion = new Argumento("descripcion","Tipo Sangre");
+                Argumento a_usuario     = new Argumento("usuario",v_usuario);
                 Dato con = new Dato();
                 UtilsWCF service = new UtilsWCF(namespace, url, soap_action + method, method);
 
