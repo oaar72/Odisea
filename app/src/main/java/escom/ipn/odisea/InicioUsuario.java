@@ -13,13 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.TextView;
-
-import java.util.ArrayList;
-
-import Data.UtilsWCF;
 
 public class InicioUsuario extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -27,7 +21,7 @@ public class InicioUsuario extends AppCompatActivity
         Fragmento_Contactos.OnFragmentInteractionListener,
         Fragmento_Lugares.OnFragmentInteractionListener
 {
-    Spinner spinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -47,7 +41,6 @@ public class InicioUsuario extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-
     }
 
     @Override
@@ -107,18 +100,17 @@ public class InicioUsuario extends AppCompatActivity
         }
         else if (id == R.id.itemContactos)
         {
-            frag = new Fragmento_Contactos();
-            //frag = new ConsultaContactos();
-            isSelectedFrag = true;
-        }
-        else if (id == R.id.itemLugares)
-        {
-            frag = new Fragmento_Lugares();
+            frag = new ConsultaContactos();
             isSelectedFrag = true;
         }
         else if (id == R.id.itemAccount)
         {
             frag = new Fragmento_Cuenta();
+            isSelectedFrag = true;
+        }
+        else if (id == R.id.itemCambioContrasenia)
+        {
+            frag = new Fragmento_CambioPass();
             isSelectedFrag = true;
         }
         else if (id == R.id.itemConfiguracion)

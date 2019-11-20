@@ -13,10 +13,6 @@
             android:icon="@drawable/ic_contacts"
             android:title="@string/item_contact" />
         <item
-            android:id="@+id/itemLugares"
-            android:icon="@drawable/ic_places"
-            android:title="@string/item_sitios" />
-        <item
             android:id="@+id/itemConfiguracion"
             android:icon="@drawable/ic_settings"
             android:title="@string/item_config" />

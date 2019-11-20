@@ -87,7 +87,7 @@ public class RegistroContactos extends AppCompatActivity
 
                     UtilsWCF service = new UtilsWCF(namespace, url, soap_action + method, method);
 
-                    con = service.addContact(a_usuario, a_nombre, a_telefono, a_mail);
+                    //con = service.addContact(a_usuario, a_nombre, a_telefono, a_mail);
 
                 }
                 else

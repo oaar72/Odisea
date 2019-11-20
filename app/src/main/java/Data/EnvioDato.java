@@ -10,6 +10,7 @@ import Entidad.Contacto;
 
 public class EnvioDato
 {
+    private String usuario;
     private String longitud;
     private String latitud;
     private int bateria;
@@ -31,6 +32,8 @@ public class EnvioDato
         this.envioWts = envioWts;
     }
 
+    public void setUsuario(String usuario){ this.usuario = usuario; }
+
     public String getLongitud()
     {
         return this.latitud;
@@ -51,12 +54,24 @@ public class EnvioDato
         this.latitud = latitud;
     }
 
-    public List<Contacto> getContactos() {
+    public List<Contacto> getContactos()
+    {
         List<Contacto> contactos = new ArrayList<Contacto>();
 
-        contactos.add(new Contacto("Oscar", "5545461176", "oalvarezvb4b@gmail.com"));
-        contactos.add(new Contacto("Ricardo", "5515275624", "rperezvb4b@gmail.com"));
-        contactos.add(new Contacto("Janis", "5583355593", "acoronavb4b@gmail.com"));
+        //contactos.add(new Contacto("Oscar", "5545461176", "oalvarezvb4b@gmail.com"));
+        //contactos.add(new Contacto("Ricardo", "5515275624", "rperezvb4b@gmail.com"));
+        //contactos.add(new Contacto("Janis", "5583355593", "acoronavb4b@gmail.com"));
+
+        String namespace    = "http://tempuri.org/";
+        String url          = "https://wsodisea.azurewebsites.net/WSOdisea.svc?wsdl";
+        String soap_action  = "http://tempuri.org/IWSOdisea/";
+        String method       = "getContacts";
+
+        Argumento a_mail = new Argumento("codUser", this.usuario );
+
+        UtilsWCF service = new UtilsWCF(namespace, url, soap_action + method, method);
+
+        contactos = service.getContactos(a_mail);
 
         return contactos;
     }
@@ -92,16 +107,6 @@ public class EnvioDato
                 service.sendMail(a_mail, a_asunto, a_mensaje);
             }
         }
-
-        if (envioFb)
-        {
-
-        }
-
-        if (envioWts)
-        {
-
-        }
     }
 
     public String constuirMensaje(int tipo)
@@ -112,11 +117,13 @@ public class EnvioDato
         {
             case 1:
                 msg += "La ultima ubicación del usuario conocida del usaurio es: " + this.latitud + "," + this.longitud + "<br/>";
-                msg += "Porcentaje de batería: " + this.bateria + "%";
+                msg += "Porcentaje de batería: " + this.bateria + "%<br />";
+                msg += getInfo();
                 break;
             case 2:
                 msg += "Ubicación conocida: " + this.latitud + " " + this.longitud;
-                msg += "\nBatería: " + this.bateria + "%";
+                msg += "\nBatería: " + this.bateria + "%\n";
+                msg += getInfo();
                 break;
         }
         return msg;
@@ -130,5 +137,23 @@ public class EnvioDato
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public String getInfo()
+    {
+        String info;
+
+        String namespace    = "http://tempuri.org/";
+        String url          = "https://wsodisea.azurewebsites.net/WSOdisea.svc?wsdl";
+        String soap_action  = "http://tempuri.org/IWSOdisea/";
+        String method       = "getInfo";
+
+        Argumento a_mail = new Argumento("codUser", this.usuario );
+
+        UtilsWCF service = new UtilsWCF(namespace, url, soap_action + method, method);
+
+        info = service.getInfo(a_mail);
+
+        return info;
     }
 }

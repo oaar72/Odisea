@@ -2,6 +2,7 @@ package escom.ipn.odisea;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
@@ -42,12 +43,19 @@ public class NotificationService extends FirebaseMessagingService
         String Body = remoteMessage.getNotification().getBody();
         String Title = remoteMessage.getNotification().getTitle();
 
+        SharedPreferences pref = this.getApplicationContext().getSharedPreferences("OdiseaPreferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+
+        String mail = pref.getString("mail", "");
+
         if (Title.contains("Servicios Odisea"))
         {
             BatteryManager bm = (BatteryManager)getSystemService(BATTERY_SERVICE);
             int batLevel = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
 
             EnvioDato envio = new EnvioDato(batLevel,"",true,true,false,false);
+            envio.setUsuario(mail);
+
             envio.setLongitud(getLocation(1));
             envio.setLatitud(getLocation(2));
             envio.enviar();

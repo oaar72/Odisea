@@ -1,5 +1,6 @@
 package Data;
 
+import android.Manifest;
 import android.os.Build;
 import android.os.StrictMode;
 
@@ -22,6 +23,12 @@ public class UtilsWCF
     private String URL;
     private String SOAP_ACTION;
     private String METHOD_NAME;
+
+    String[] LOCATION_PERMS={Manifest.permission.ACCESS_FINE_LOCATION};
+    String[] INITIAL_PERMS={
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.READ_CONTACTS
+    };
 
     public UtilsWCF(String namespace, String url, String soap_action, String method_name)
     {
@@ -279,6 +286,7 @@ public class UtilsWCF
         }
         return mensaje;
     }
+
     public ArrayList<String> traerGrupos()
     {
         SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
@@ -369,6 +377,182 @@ public class UtilsWCF
             e.printStackTrace();
             return null;
         }
+    }
+
+    public ArrayList<Contacto> getContactos(Argumento codUser)
+    {
+        SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
+
+        request.addProperty(codUser.getKey(), codUser.getValue());
+
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.dotNet = true;
+        envelope.setOutputSoapObject(request);
+
+        HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+
+        if (android.os.Build.VERSION.SDK_INT > 9)
+        {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+        try
+        {
+            androidHttpTransport.call(SOAP_ACTION, envelope);
+            SoapObject response = (SoapObject) envelope.getResponse();
+
+            ArrayList<Contacto> contactos = new ArrayList<>();
+
+            for (int i = 0; i< response.getPropertyCount(); i++)
+            {
+                SoapObject c = (SoapObject) response.getProperty(i);
+                contactos.add(new Contacto(c.getPropertyAsString("nombre"),
+                        c.getPropertyAsString("telefono"),
+                        c.getPropertyAsString("email")));
+
+            }
+            return contactos;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+
+            return null;
+        }
+    }
+
+    public Persona updateUser(Argumento nombre, Argumento paterno, Argumento phone, Argumento mail)
+    {
+        SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
+
+        request.addProperty(nombre.getKey(), nombre.getValue());
+        request.addProperty(paterno.getKey(), paterno.getValue());
+        request.addProperty(phone.getKey(), phone.getValue());
+        request.addProperty(mail.getKey(), mail.getValue());
+
+        Persona user = new Persona();
+
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.dotNet = true;
+        envelope.setOutputSoapObject(request);
+
+        HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+
+        if (android.os.Build.VERSION.SDK_INT > 9)
+        {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+        try
+        {
+            androidHttpTransport.call(SOAP_ACTION, envelope);
+            SoapObject response = (SoapObject) envelope.getResponse();
+
+            if (response.getProperty("mensaje") != null)
+            {
+                user.setMensaje(response.getPropertyAsString("mensaje"));
+            }
+
+            if (user.getMensaje().equals(" "))
+            {
+                user.setCodUser(response.getPropertyAsString("codUser"));
+                user.setNombre(response.getPropertyAsString("nombre"));
+                user.setPaterno(response.getPropertyAsString("paterno"));
+                user.setTelefono(response.getPropertyAsString("telefono"));
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return user;
+    }
+
+    public void updatePass(Argumento mail, Argumento pass1, Argumento pass2)
+    {
+        SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
+
+        request.addProperty(mail.getKey(), mail.getValue());
+        request.addProperty(pass1.getKey(), pass1.getValue());
+        request.addProperty(pass2.getKey(), pass2.getValue());
+
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.dotNet = true;
+        envelope.setOutputSoapObject(request);
+
+        HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+
+        if (android.os.Build.VERSION.SDK_INT > 9)
+        {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+        try
+        {
+            androidHttpTransport.call(SOAP_ACTION, envelope);
+            SoapObject response = (SoapObject) envelope.getResponse();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void deletePersona(Argumento mail)
+    {
+        SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
+        request.addProperty(mail.getKey(), mail.getValue());
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.dotNet = true;
+        envelope.setOutputSoapObject(request);
+        HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+        if (android.os.Build.VERSION.SDK_INT > 9)
+        {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+        try
+        {
+            androidHttpTransport.call(SOAP_ACTION, envelope);
+            SoapObject response = (SoapObject) envelope.getResponse();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public String getInfo(Argumento codUser)
+    {
+        String mensaje;
+
+        SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
+
+        request.addProperty(codUser.getKey(), codUser.getValue());
+
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.dotNet = true;
+        envelope.setOutputSoapObject(request);
+
+        HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+
+        if (android.os.Build.VERSION.SDK_INT > 9)
+        {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+        try
+        {
+            androidHttpTransport.call(SOAP_ACTION, envelope);
+            SoapPrimitive response = (SoapPrimitive) envelope.getResponse();
+            mensaje = response.toString();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            mensaje = e.getStackTrace().toString();
+        }
+        return mensaje;
     }
 
 }
