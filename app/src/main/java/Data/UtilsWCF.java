@@ -200,7 +200,7 @@ public class UtilsWCF
         return dato;
     }
 
-    public Contacto addContact(Argumento usuario, Argumento nombre, Argumento phone, Argumento mail)
+    public Contacto addContact(Argumento usuario, Argumento nombre, Argumento phone, Argumento mail,Argumento clasifi)
     {
         SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
 
@@ -305,7 +305,16 @@ public class UtilsWCF
             SoapObject response = (SoapObject) envelope.getResponse();
 
             ArrayList<String> lista = new ArrayList<>();
-            lista.add(response.getPropertyAsString("string"));
+
+            int count = response.getPropertyCount();
+            for(int index = 0; index < count; index ++)
+            {
+
+                String respuesta = response.getProperty(index).toString();
+                lista.add(respuesta);
+                //lista.add(response.getPropertyAsString("string"));
+            }
+            //lista.add(response.getPropertyAsString("string"));
             return lista;
         }
         catch (Exception e)
@@ -343,7 +352,15 @@ public class UtilsWCF
             SoapObject response = (SoapObject) envelope.getResponse();
 
             ArrayList<String> lista = new ArrayList<>();
-            lista.add(response.getPropertyAsString("string"));
+            int count = response.getPropertyCount();
+            for(int index = 0; index < count; index ++)
+            {
+
+                String respuesta = response.getProperty(index).toString();
+                lista.add(respuesta);
+                //lista.add(response.getPropertyAsString("string"));
+            }
+
             return lista;
         }
         catch (Exception e)

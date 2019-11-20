@@ -26,7 +26,7 @@ import static android.content.Context.MODE_PRIVATE;
  * {@link ConsultaContactos.OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class ConsultaContactos extends Fragment {
+public class ConsultaContactos extends Fragment implements ListView.OnClickListener{
 
     //private OnFragmentInteractionListener mListener;
 
@@ -98,6 +98,13 @@ public class ConsultaContactos extends Fragment {
     public void onDetach() {
         super.onDetach();
         //mListener = null;
+    }
+
+    @Override
+    public void onClick(View v) {
+
+
+
     }
 
     /**
